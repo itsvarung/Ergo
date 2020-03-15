@@ -1,6 +1,6 @@
 import UIKit
 
-class FocusSessionVC: UIViewController {
+class PlayExerciseVC: UIViewController {
 
     @IBOutlet weak var activityNameLabel: UILabel!
     @IBOutlet weak var progressBar: UIProgressView!
@@ -9,9 +9,16 @@ class FocusSessionVC: UIViewController {
     @IBOutlet var background: UIView!
     @IBOutlet weak var timeElapsedLabel: UILabel!
     @IBOutlet weak var timeRemainingLabel: UILabel!
- 
+    @IBOutlet weak var closeButton: UIButton!
+    
+    /// set of activities to go through
+    var sessions: [Activity] = []
+    
     /// the activity that is currently being played
     var currentSession: Activity? = focusSession
+
+    /// index of current sessions array element that is being played
+    var currentSessionIndex: Int = 0
     
     private lazy var stopwatch: Stopwatch? = Stopwatch(timeUpdated: { [weak self] timeInterval in
         
@@ -39,13 +46,19 @@ class FocusSessionVC: UIViewController {
         //Pull last session from memory
         guard let currentSession = currentSession else {return}
         updateCurrentSession(newSession: currentSession)
+
     }
     
     deinit {
         stopwatch = nil
         stopwatch?.stop()
     }
-
+    
+    func setup(exercises:[Activity]) {
+        currentSession = exercises[currentSessionIndex]
+        sessions = exercises
+    }
+    
     func updateCurrentSession(newSession:Activity) {
         currentSession = newSession
         guard let currentSession = currentSession else {return}
@@ -57,18 +70,22 @@ class FocusSessionVC: UIViewController {
     func prepareForNextActivity() {
         stopwatch?.stop()
         playPauseButton.setImage(#imageLiteral(resourceName: "play-icon"), for: .normal)
-
-        switch currentSession?.type {
-        case .focusSession:
-            guard let exercise = exercises.randomElement() else {return}
-            updateCurrentSession(newSession: exercise)
-        case .exercise:
-            updateCurrentSession(newSession: shortBreak)
-        case .shortBreak:
-            updateCurrentSession(newSession: focusSession)
-        default:
-            updateCurrentSession(newSession: focusSession)
+        
+        //If this is a one off activity, set up VC with same activity, just restart timer, reset labels etc.
+        if currentSessionIndex < (sessions.count - 1)  {
+            currentSessionIndex = currentSessionIndex + 1
+            updateCurrentSession(newSession: sessions[currentSessionIndex + 1])
+        } else {
+            currentSessionIndex = 0
+            updateCurrentSession(newSession: sessions[currentSessionIndex])
         }
+    }
+    
+    @IBAction func pressedCloseButton(_ sender: Any) {
+        self.dismiss(animated: true, completion: {})
+
+        guard let navController = navigationController else {return}
+        navController.popViewController(animated: true)
     }
     
     @IBAction func onPlayPause(_ sender: Any) {
@@ -96,6 +113,9 @@ class FocusSessionVC: UIViewController {
         timeRemainingLabel.textColor = UIColor.primary
         timeElapsedLabel.text = "00:00:00"
         timeRemainingLabel.text = "00:00:00"
+        closeButton.tintColor = .primary
+        nextActivityButton.isHidden = true
+        nextActivityButton.isEnabled = false
     }
     
     private func timeString(from timeInterval: TimeInterval) -> String {
@@ -104,6 +124,5 @@ class FocusSessionVC: UIViewController {
         let hours = Int(timeInterval / 3600)
         return String(format: "%.2d:%.2d:%.2d", hours, minutes, seconds)
     }
-    
 }
 

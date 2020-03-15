@@ -161,17 +161,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lgB-A2-LuE">
-                                <rect key="frame" x="33" y="77" width="23" height="27"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="27" id="6D4-KS-gry"/>
-                                    <constraint firstAttribute="width" constant="23" id="YKK-tw-VeU"/>
-                                </constraints>
-                                <state key="normal" image="close-icon"/>
-                                <connections>
-                                    <action selector="pressedCloseButton:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="pVS-qV-12j"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" name="Container-Primary"/>
                         <constraints>
@@ -181,10 +170,8 @@
                             <constraint firstItem="S53-Qu-DhP" firstAttribute="centerX" secondItem="O1u-W8-tvY" secondAttribute="centerX" id="5tn-Ou-rS5"/>
                             <constraint firstItem="iwU-sz-0AY" firstAttribute="top" secondItem="6cl-i1-fii" secondAttribute="bottom" constant="40" id="A4I-yk-fFI"/>
                             <constraint firstItem="KQ5-EO-114" firstAttribute="trailing" secondItem="O1u-W8-tvY" secondAttribute="trailing" id="Aek-ue-g2Z"/>
-                            <constraint firstItem="lgB-A2-LuE" firstAttribute="top" secondItem="O1u-W8-tvY" secondAttribute="top" constant="33" id="F6K-Dy-iV3"/>
                             <constraint firstItem="PS0-88-4VI" firstAttribute="leading" secondItem="S53-Qu-DhP" secondAttribute="trailing" constant="30" id="GUn-Ox-yDN"/>
                             <constraint firstItem="Fwa-FU-j3b" firstAttribute="leading" secondItem="iwU-sz-0AY" secondAttribute="leading" id="JLB-De-Map"/>
-                            <constraint firstItem="lgB-A2-LuE" firstAttribute="leading" secondItem="O1u-W8-tvY" secondAttribute="leading" constant="33" id="KUB-m7-tkP"/>
                             <constraint firstItem="KQ5-EO-114" firstAttribute="bottom" secondItem="O1u-W8-tvY" secondAttribute="bottom" id="STs-vU-LkQ"/>
                             <constraint firstItem="6cl-i1-fii" firstAttribute="centerX" secondItem="O1u-W8-tvY" secondAttribute="centerX" id="Sw2-rS-omb"/>
                             <constraint firstItem="S53-Qu-DhP" firstAttribute="top" secondItem="iwU-sz-0AY" secondAttribute="bottom" constant="40" id="W6M-GL-Dcv"/>
@@ -201,7 +188,6 @@
                     <connections>
                         <outlet property="activityNameLabel" destination="6cl-i1-fii" id="JlF-ab-VQK"/>
                         <outlet property="background" destination="QS5-Rx-YEW" id="vtx-P3-8E6"/>
-                        <outlet property="closeButton" destination="lgB-A2-LuE" id="Nwa-Pb-MZl"/>
                         <outlet property="nextActivityButton" destination="PS0-88-4VI" id="bcg-CM-BLl"/>
                         <outlet property="playPauseButton" destination="S53-Qu-DhP" id="beP-3F-dUz"/>
                         <outlet property="progressBar" destination="iwU-sz-0AY" id="zhv-K7-LQI"/>
@@ -252,6 +238,112 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6La-lt-wm9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="747.82608695652175" y="-336.16071428571428"/>
+        </scene>
+        <!--Play Exercise-->
+        <scene sceneID="U6A-SM-N54">
+            <objects>
+                <viewController storyboardIdentifier="PlayExerciseVC" title="Play Exercise" id="Ltj-eF-sgO" customClass="PlayExerciseVC" customModule="Meyender" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OKK-ex-AmD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7g5-lC-u90">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AG1-AY-XzS">
+                                <rect key="frame" x="167" y="732" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="hdD-i8-gjc"/>
+                                    <constraint firstAttribute="height" constant="80" id="uka-CI-c3n"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="play-icon"/>
+                                <connections>
+                                    <action selector="onPlayPause:" destination="Ltj-eF-sgO" eventType="touchUpInside" id="Ya4-xH-2nR"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rNT-iE-SZ1">
+                                <rect key="frame" x="277" y="756.5" width="51" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="51" id="NNL-tR-pIw"/>
+                                    <constraint firstAttribute="height" constant="31" id="Sw8-Ib-9qa"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="fast-forward-icon"/>
+                                <connections>
+                                    <action selector="onSkip:" destination="Ltj-eF-sgO" eventType="touchUpInside" id="yFW-a7-0Hx"/>
+                                </connections>
+                            </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Hgb-wF-guW">
+                                <rect key="frame" x="30" y="690" width="354" height="2"/>
+                            </progressView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PR9-0G-qTy">
+                                <rect key="frame" x="185" y="629" width="44.5" height="21"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bAK-9A-OBW">
+                                <rect key="frame" x="30" y="697" width="31" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2U1-xE-PDN">
+                                <rect key="frame" x="353" y="697" width="31" height="15"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pk7-RB-IQk">
+                                <rect key="frame" x="33" y="77" width="23" height="27"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="23" id="GvU-nG-9tc"/>
+                                    <constraint firstAttribute="height" constant="27" id="aRF-oc-Q1U"/>
+                                </constraints>
+                                <state key="normal" image="close-icon"/>
+                                <connections>
+                                    <action selector="pressedCloseButton:" destination="Ltj-eF-sgO" eventType="touchUpInside" id="hNY-hI-JZC"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" name="Container-Primary"/>
+                        <constraints>
+                            <constraint firstItem="2U1-xE-PDN" firstAttribute="trailing" secondItem="Hgb-wF-guW" secondAttribute="trailing" id="7H3-uK-4No"/>
+                            <constraint firstItem="Hgb-wF-guW" firstAttribute="leading" secondItem="rI8-Px-lHL" secondAttribute="leading" constant="30" id="7dE-Ty-5xy"/>
+                            <constraint firstItem="2U1-xE-PDN" firstAttribute="top" secondItem="Hgb-wF-guW" secondAttribute="bottom" constant="5" id="A9o-bj-dKr"/>
+                            <constraint firstItem="7g5-lC-u90" firstAttribute="trailing" secondItem="rI8-Px-lHL" secondAttribute="trailing" id="Bbr-Yt-0fB"/>
+                            <constraint firstItem="7g5-lC-u90" firstAttribute="top" secondItem="OKK-ex-AmD" secondAttribute="top" id="CkV-CE-fo4"/>
+                            <constraint firstItem="7g5-lC-u90" firstAttribute="bottom" secondItem="rI8-Px-lHL" secondAttribute="bottom" id="FGD-wa-H8B"/>
+                            <constraint firstItem="PR9-0G-qTy" firstAttribute="centerX" secondItem="rI8-Px-lHL" secondAttribute="centerX" id="Ge0-wE-kei"/>
+                            <constraint firstItem="AG1-AY-XzS" firstAttribute="centerX" secondItem="rI8-Px-lHL" secondAttribute="centerX" id="Miu-Xq-4ge"/>
+                            <constraint firstItem="AG1-AY-XzS" firstAttribute="top" secondItem="Hgb-wF-guW" secondAttribute="bottom" constant="40" id="bgP-Ov-X7n"/>
+                            <constraint firstItem="rNT-iE-SZ1" firstAttribute="leading" secondItem="AG1-AY-XzS" secondAttribute="trailing" constant="30" id="cG6-yP-BJI"/>
+                            <constraint firstItem="bAK-9A-OBW" firstAttribute="top" secondItem="Hgb-wF-guW" secondAttribute="bottom" constant="5" id="cr6-Vc-VCp"/>
+                            <constraint firstItem="7g5-lC-u90" firstAttribute="leading" secondItem="rI8-Px-lHL" secondAttribute="leading" id="eIj-3i-1d2"/>
+                            <constraint firstItem="Hgb-wF-guW" firstAttribute="centerX" secondItem="rI8-Px-lHL" secondAttribute="centerX" id="f8l-7I-CDP"/>
+                            <constraint firstItem="pk7-RB-IQk" firstAttribute="leading" secondItem="rI8-Px-lHL" secondAttribute="leading" constant="33" id="m40-xQ-tpl"/>
+                            <constraint firstItem="rNT-iE-SZ1" firstAttribute="centerY" secondItem="AG1-AY-XzS" secondAttribute="centerY" id="qP6-BI-RFc"/>
+                            <constraint firstItem="bAK-9A-OBW" firstAttribute="leading" secondItem="Hgb-wF-guW" secondAttribute="leading" id="uBy-cP-DzK"/>
+                            <constraint firstItem="AG1-AY-XzS" firstAttribute="bottom" secondItem="7g5-lC-u90" secondAttribute="bottom" constant="-50" id="wPG-vh-HHd"/>
+                            <constraint firstItem="pk7-RB-IQk" firstAttribute="top" secondItem="rI8-Px-lHL" secondAttribute="top" constant="33" id="x4c-yG-jpT"/>
+                            <constraint firstItem="Hgb-wF-guW" firstAttribute="top" secondItem="PR9-0G-qTy" secondAttribute="bottom" constant="40" id="xTt-1J-e4h"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="rI8-Px-lHL"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Start Focus Session" image="second" id="BBf-hU-9kt"/>
+                    <connections>
+                        <outlet property="activityNameLabel" destination="PR9-0G-qTy" id="Ou2-lr-Kgh"/>
+                        <outlet property="background" destination="OKK-ex-AmD" id="OpI-pJ-ADT"/>
+                        <outlet property="closeButton" destination="pk7-RB-IQk" id="mN4-qm-FRJ"/>
+                        <outlet property="nextActivityButton" destination="rNT-iE-SZ1" id="4xg-lC-nPm"/>
+                        <outlet property="playPauseButton" destination="AG1-AY-XzS" id="EEc-jq-nE6"/>
+                        <outlet property="progressBar" destination="Hgb-wF-guW" id="H5n-hg-AMY"/>
+                        <outlet property="timeElapsedLabel" destination="bAK-9A-OBW" id="tQS-Bw-gZL"/>
+                        <outlet property="timeRemainingLabel" destination="2U1-xE-PDN" id="dAs-vD-nir"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1jS-ZI-5R5" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1542" y="360"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

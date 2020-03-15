@@ -24,6 +24,7 @@ class ExerciseVC: UIViewController {
         createHeader()
         setStyling()
     }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
 
@@ -40,14 +41,10 @@ class ExerciseVC: UIViewController {
             }
         }
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
     }
         
     func setStyling() {
@@ -108,13 +105,11 @@ extension ExerciseVC: ExerciseVCHeaderViewDelegate {
     }
     
     func onPressPlay() {
-        print("hi")
-        let playActivityVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "FocusSessionVC") as! FocusSessionVC
+        let playActivityVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PlayExerciseVC") as! PlayExerciseVC
 
         guard let exercise = exercise else {return}
-        playActivityVC.setup(exercise: exercise)
+        playActivityVC.setup(exercises: [exercise])
         self.present(playActivityVC, animated: true, completion: nil)
-
     }
 }
 

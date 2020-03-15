@@ -31,6 +31,7 @@
 		E955EF6D241692E600113CF9 /* BodyPartVCHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E955EF6B241692E600113CF9 /* BodyPartVCHeader.swift */; };
 		E955EF6F2416AB6F00113CF9 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = E955EF6E2416AB6F00113CF9 /* Section.swift */; };
 		E99C6D1B2413DA6B006D8456 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E99C6D1A2413DA6B006D8456 /* String+Extensions.swift */; };
+		E9C7699E241E8C9C005D680D /* PlayExerciseVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C7699D241E8C9C005D680D /* PlayExerciseVC.swift */; };
 		E9E8CEBF2406C5CD00DC1028 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E8CEBE2406C5CD00DC1028 /* AppDelegate.swift */; };
 		E9E8CEC12406C5CD00DC1028 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E8CEC02406C5CD00DC1028 /* SceneDelegate.swift */; };
 		E9E8CEC32406C5CD00DC1028 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9E8CEC22406C5CD00DC1028 /* HomeVC.swift */; };
@@ -82,6 +83,7 @@
 		E955EF6B241692E600113CF9 /* BodyPartVCHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BodyPartVCHeader.swift; sourceTree = "<group>"; };
 		E955EF6E2416AB6F00113CF9 /* Section.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section.swift; sourceTree = "<group>"; };
 		E99C6D1A2413DA6B006D8456 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
+		E9C7699D241E8C9C005D680D /* PlayExerciseVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayExerciseVC.swift; sourceTree = "<group>"; };
 		E9E8CEBB2406C5CD00DC1028 /* Meyender.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Meyender.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9E8CEBE2406C5CD00DC1028 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9E8CEC02406C5CD00DC1028 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -214,6 +216,14 @@
 			path = BodyPartVCHeader;
 			sourceTree = "<group>";
 		};
+		E9C7699C241E8C9C005D680D /* PlayExercise */ = {
+			isa = PBXGroup;
+			children = (
+				E9C7699D241E8C9C005D680D /* PlayExerciseVC.swift */,
+			);
+			path = PlayExercise;
+			sourceTree = "<group>";
+		};
 		E9E8CEB22406C5CD00DC1028 = {
 			isa = PBXGroup;
 			children = (
@@ -267,6 +277,7 @@
 				E9268E62240EC9AD0030CA0E /* Exercise */,
 				E9E8CEE8240860AB00DC1028 /* Home */,
 				E9E8CEE9240860B400DC1028 /* FocusSession */,
+				E9C7699C241E8C9C005D680D /* PlayExercise */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -447,6 +458,7 @@
 				E9E8CEC32406C5CD00DC1028 /* HomeVC.swift in Sources */,
 				E9E8CEF22409183A00DC1028 /* Activity.swift in Sources */,
 				E9268E6B240ED9AE0030CA0E /* ExerciseVCTableViewCell.swift in Sources */,
+				E9C7699E241E8C9C005D680D /* PlayExerciseVC.swift in Sources */,
 				E9268E72240EFD630030CA0E /* SpacingTableViewCell.swift in Sources */,
 				E955EF5B24154EF100113CF9 /* RecommendedCollectionViewCell.swift in Sources */,
 				E9E8CEBF2406C5CD00DC1028 /* AppDelegate.swift in Sources */,

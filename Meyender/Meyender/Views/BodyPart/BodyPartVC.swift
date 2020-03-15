@@ -7,8 +7,8 @@ class BodyPartVC: UIViewController {
     var bodyPart: BodyPart? = .eyes
     var bodyPartExercises: [Activity] = []
     var improvementFilteredExercises: [[Activity]]? = []
-    var selectedIndex: IndexPath?
-    var selectedTableViewSection: Int?
+    var selectedExerciseIndex: IndexPath?
+    var horizontalCarouselTag: Int?
     var currentTableViewSectionBeingCreated: Int = 0
     var sections: [Section] =  [Section(sectionTitle: "Power Set", sectionDescription: "A set of 3 exercises put together to help relieve discomfort!")]
     
@@ -49,11 +49,6 @@ class BodyPartVC: UIViewController {
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
-    
     func setStyling() {
         tableView.backgroundColor = UIColor.containerSecondary
         view.backgroundColor = UIColor.containerSecondary
@@ -90,18 +85,13 @@ class BodyPartVC: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        print("Hello")
-        print("Hello tv section" + String(selectedIndex!.row))
-        print("Hello exercise index" + String(selectedTableViewSection!))
         if  segue.identifier == "showExerciseVCCV",
             let destination = segue.destination as? ExerciseVC,
-            let selectedExerciseIndex = selectedIndex,
-            let selectedTableViewSection = selectedTableViewSection
+            let selectedExerciseIndex = selectedExerciseIndex,
+            let horizontalCarouselTag = horizontalCarouselTag,
+            let exercises = improvementFilteredExercises
         {
-            print("Hello tv section" + String(selectedTableViewSection))
-            print("Hello exercise index" + String(selectedExerciseIndex.row))
-            guard let section = tableView.indexPathForSelectedRow?.section, let exercises =  improvementFilteredExercises else {return}
-            destination.exercise = exercises[selectedTableViewSection - 1][selectedExerciseIndex.row]
+            destination.exercise = exercises[horizontalCarouselTag][selectedExerciseIndex.row]
         }
     }
 }
@@ -115,7 +105,9 @@ extension BodyPartVC : UITableViewDelegate,UITableViewDataSource {
                 return UITableViewCell()
             }
             
-            cell.setup(exercise1: exercises.randomElement()!, exercise2: exercises.randomElement()!, exercise3: exercises.randomElement()!)
+            let bodyPartSpecificExercises = exercises.filter { $0.bodyPart == bodyPart}
+            guard let e1 = bodyPartSpecificExercises.randomElement(), let e2 = bodyPartSpecificExercises.randomElement(), let e3 = bodyPartSpecificExercises.randomElement() else {return UITableViewCell()}
+            cell.setup(exercise1: e1, exercise2: e2, exercise3: e3)
             return cell
         } else {
             currentTableViewSectionBeingCreated = indexPath.section
@@ -124,6 +116,7 @@ extension BodyPartVC : UITableViewDelegate,UITableViewDataSource {
             }
             cell.collectionView.dataSource = self
             cell.collectionView.delegate = self
+            cell.collectionView.tag = indexPath.section - 1
             return cell
         }
     }
@@ -145,10 +138,6 @@ extension BodyPartVC : UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1 
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        selectedTableViewSection = indexPath.section
     }
 }
 extension BodyPartVC {
@@ -188,7 +177,8 @@ extension BodyPartVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
         tableView.layoutIfNeeded()
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        selectedIndex = indexPath
+        selectedExerciseIndex = indexPath
+        horizontalCarouselTag = collectionView.tag
         performSegue(withIdentifier: "showExerciseVCCV", sender: self)
     }
 }

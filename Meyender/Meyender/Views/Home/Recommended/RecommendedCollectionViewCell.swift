@@ -17,6 +17,7 @@ class RecommendedCollectionViewCell: UICollectionViewCell {
         lengthLabel.textColor = .primary
         helpsWithButton.backgroundColor = .primary
         helpsWithButton.layer.cornerRadius = 5
+        helpsWithButton.isEnabled = false
     }
     
     func setup(exercise: Activity) {
