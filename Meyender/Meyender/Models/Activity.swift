@@ -9,6 +9,7 @@ struct Activity {
     var bodyPart: BodyPart? = nil
     var helpsWith: Improvement? = nil
     var length : Double
+    var noOfRepeats: Int? = 0
     var steps : [Step]? = []
 }
 

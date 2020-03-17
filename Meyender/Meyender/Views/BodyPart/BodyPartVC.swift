@@ -11,7 +11,8 @@ class BodyPartVC: UIViewController {
     var horizontalCarouselTag: Int?
     var currentTableViewSectionBeingCreated: Int = 0
     var sections: [Section] =  [Section(sectionTitle: "Power Set", sectionDescription: "A set of 3 exercises put together to help relieve discomfort!")]
-    
+    var powerSetExercises: [Activity] = []
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -105,10 +106,14 @@ extension BodyPartVC : UITableViewDelegate,UITableViewDataSource {
                 return UITableViewCell()
             }
             
-            let bodyPartSpecificExercises = exercises.filter { $0.bodyPart == bodyPart}
-            guard let e1 = bodyPartSpecificExercises.randomElement(), let e2 = bodyPartSpecificExercises.randomElement(), let e3 = bodyPartSpecificExercises.randomElement() else {return UITableViewCell()}
-            cell.setup(exercise1: e1, exercise2: e2, exercise3: e3)
-            return cell
+            powerSetExercises = generatePowerSet(exercises: exercises.filter { $0.bodyPart == bodyPart})
+            
+            if powerSetExercises.count == 3 {
+                cell.setup(exercise1: powerSetExercises[0], exercise2: powerSetExercises[1], exercise3: powerSetExercises[2])
+                return cell
+            } else {
+                return UITableViewCell()
+            }
         } else {
             currentTableViewSectionBeingCreated = indexPath.section
             guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "RecommendedTableViewCell") as? RecommendedTableViewCell else {
@@ -138,6 +143,15 @@ extension BodyPartVC : UITableViewDelegate,UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1 
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            let playActivityVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PlayExerciseVC") as! PlayExerciseVC
+
+            playActivityVC.setup(exercises: powerSetExercises)
+            self.present(playActivityVC, animated: true, completion: nil)
+        }
     }
 }
 extension BodyPartVC {

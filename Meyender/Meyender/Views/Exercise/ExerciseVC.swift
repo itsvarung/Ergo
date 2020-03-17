@@ -5,7 +5,7 @@ class ExerciseVC: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var exercise: Activity?
     var headerView: ExerciseVCHeaderView?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
@@ -96,6 +96,7 @@ extension ExerciseVC: UITableViewDataSource, UITableViewDelegate {
             return cell
         }
     }
+
 }
 
 extension ExerciseVC: ExerciseVCHeaderViewDelegate {

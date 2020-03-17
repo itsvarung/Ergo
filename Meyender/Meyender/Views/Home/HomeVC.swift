@@ -16,6 +16,7 @@ class HomeVC: UIViewController {
                                 Section(sectionTitle: "Recommended", sectionDescription: "A couple of personalised exercises to help help relieve your every day pains and aches"),
                                 Section(sectionTitle: "Where's the pain?", sectionDescription: "Help target your pain points with our body part specific exercises")]
     
+    var powerSetExercises: [Activity] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +51,10 @@ class HomeVC: UIViewController {
         tableView.contentInset = UIEdgeInsets(top: -dummyViewHeight, left: 0, bottom: 0, right: 0)
 
         let attributes = [NSAttributedString.Key.foregroundColor: UIColor.primary]
-        navigationController?.navigationBar.largeTitleTextAttributes = attributes
+        navigationController?.navigationBar.largeTitleTextAttributes = attributes as [NSAttributedString.Key : Any]
+        
+        powerSetExercises = generatePowerSet(exercises: exercises)
+
         setStyling()
     }
     
@@ -99,9 +103,13 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
             guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "PowerSetTableViewCell") as? PowerSetTableViewCell else {
                 return UITableViewCell()
             }
-            
-            cell.setup(exercise1: exercises.randomElement()!, exercise2: exercises.randomElement()!, exercise3: exercises.randomElement()!)
-            return cell
+                    
+            if powerSetExercises.count == 3 {
+                cell.setup(exercise1: powerSetExercises[0], exercise2: powerSetExercises[1], exercise3: powerSetExercises[2])
+                return cell
+            } else {
+                return UITableViewCell()
+            }
         } else if indexPath.section == 1 {
             guard let cell = self.tableView.dequeueReusableCell(withIdentifier: "RecommendedTableViewCell") as? RecommendedTableViewCell else {
                 return UITableViewCell()
@@ -119,7 +127,15 @@ extension HomeVC: UITableViewDelegate, UITableViewDataSource {
         
         return UITableViewCell()
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            let playActivityVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "PlayExerciseVC") as! PlayExerciseVC
 
+            playActivityVC.setup(exercises: powerSetExercises)
+            self.present(playActivityVC, animated: true, completion: nil)
+        }
+    }
 }
 
  

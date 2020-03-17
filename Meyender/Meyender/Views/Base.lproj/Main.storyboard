@@ -73,7 +73,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0uo-d6-sf1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2986" y="-698"/>
+            <point key="canvasLocation" x="3775" y="-426"/>
         </scene>
         <!--Body PartVC-->
         <scene sceneID="K7p-Jg-Hyo">
@@ -105,7 +105,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bqA-B1-qEJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2348" y="85"/>
+            <point key="canvasLocation" x="3007" y="360"/>
         </scene>
         <!--Start Focus Session-->
         <scene sceneID="wg7-f3-ORb">
@@ -155,7 +155,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4tt-tG-3KU">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4tt-tG-3KU">
                                 <rect key="frame" x="353" y="648" width="31" height="15"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <nil key="textColor"/>
@@ -174,6 +174,7 @@
                             <constraint firstItem="Fwa-FU-j3b" firstAttribute="leading" secondItem="iwU-sz-0AY" secondAttribute="leading" id="JLB-De-Map"/>
                             <constraint firstItem="KQ5-EO-114" firstAttribute="bottom" secondItem="O1u-W8-tvY" secondAttribute="bottom" id="STs-vU-LkQ"/>
                             <constraint firstItem="6cl-i1-fii" firstAttribute="centerX" secondItem="O1u-W8-tvY" secondAttribute="centerX" id="Sw2-rS-omb"/>
+                            <constraint firstItem="4tt-tG-3KU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Fwa-FU-j3b" secondAttribute="trailing" constant="30" id="U9B-gL-mJs"/>
                             <constraint firstItem="S53-Qu-DhP" firstAttribute="top" secondItem="iwU-sz-0AY" secondAttribute="bottom" constant="40" id="W6M-GL-Dcv"/>
                             <constraint firstItem="iwU-sz-0AY" firstAttribute="centerX" secondItem="O1u-W8-tvY" secondAttribute="centerX" id="XCR-cy-toc"/>
                             <constraint firstItem="PS0-88-4VI" firstAttribute="centerY" secondItem="S53-Qu-DhP" secondAttribute="centerY" id="bju-SH-m26"/>
@@ -304,6 +305,12 @@
                                     <action selector="pressedCloseButton:" destination="Ltj-eF-sgO" eventType="touchUpInside" id="hNY-hI-JZC"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eWP-jz-XMi">
+                                <rect key="frame" x="40" y="568.5" width="334" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" name="Container-Primary"/>
                         <constraints>
@@ -315,14 +322,18 @@
                             <constraint firstItem="7g5-lC-u90" firstAttribute="bottom" secondItem="rI8-Px-lHL" secondAttribute="bottom" id="FGD-wa-H8B"/>
                             <constraint firstItem="PR9-0G-qTy" firstAttribute="centerX" secondItem="rI8-Px-lHL" secondAttribute="centerX" id="Ge0-wE-kei"/>
                             <constraint firstItem="AG1-AY-XzS" firstAttribute="centerX" secondItem="rI8-Px-lHL" secondAttribute="centerX" id="Miu-Xq-4ge"/>
+                            <constraint firstItem="PR9-0G-qTy" firstAttribute="top" secondItem="eWP-jz-XMi" secondAttribute="bottom" constant="40" id="NRp-Hs-baM"/>
                             <constraint firstItem="AG1-AY-XzS" firstAttribute="top" secondItem="Hgb-wF-guW" secondAttribute="bottom" constant="40" id="bgP-Ov-X7n"/>
                             <constraint firstItem="rNT-iE-SZ1" firstAttribute="leading" secondItem="AG1-AY-XzS" secondAttribute="trailing" constant="30" id="cG6-yP-BJI"/>
                             <constraint firstItem="bAK-9A-OBW" firstAttribute="top" secondItem="Hgb-wF-guW" secondAttribute="bottom" constant="5" id="cr6-Vc-VCp"/>
                             <constraint firstItem="7g5-lC-u90" firstAttribute="leading" secondItem="rI8-Px-lHL" secondAttribute="leading" id="eIj-3i-1d2"/>
                             <constraint firstItem="Hgb-wF-guW" firstAttribute="centerX" secondItem="rI8-Px-lHL" secondAttribute="centerX" id="f8l-7I-CDP"/>
+                            <constraint firstItem="2U1-xE-PDN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="bAK-9A-OBW" secondAttribute="trailing" constant="30" id="hiZ-5G-hQ4"/>
+                            <constraint firstItem="eWP-jz-XMi" firstAttribute="leading" secondItem="rI8-Px-lHL" secondAttribute="leading" constant="40" id="jUG-Dr-1hP"/>
                             <constraint firstItem="pk7-RB-IQk" firstAttribute="leading" secondItem="rI8-Px-lHL" secondAttribute="leading" constant="33" id="m40-xQ-tpl"/>
                             <constraint firstItem="rNT-iE-SZ1" firstAttribute="centerY" secondItem="AG1-AY-XzS" secondAttribute="centerY" id="qP6-BI-RFc"/>
                             <constraint firstItem="bAK-9A-OBW" firstAttribute="leading" secondItem="Hgb-wF-guW" secondAttribute="leading" id="uBy-cP-DzK"/>
+                            <constraint firstItem="eWP-jz-XMi" firstAttribute="centerX" secondItem="rI8-Px-lHL" secondAttribute="centerX" id="wD5-we-1dz"/>
                             <constraint firstItem="AG1-AY-XzS" firstAttribute="bottom" secondItem="7g5-lC-u90" secondAttribute="bottom" constant="-50" id="wPG-vh-HHd"/>
                             <constraint firstItem="pk7-RB-IQk" firstAttribute="top" secondItem="rI8-Px-lHL" secondAttribute="top" constant="33" id="x4c-yG-jpT"/>
                             <constraint firstItem="Hgb-wF-guW" firstAttribute="top" secondItem="PR9-0G-qTy" secondAttribute="bottom" constant="40" id="xTt-1J-e4h"/>
@@ -337,17 +348,18 @@
                         <outlet property="nextActivityButton" destination="rNT-iE-SZ1" id="4xg-lC-nPm"/>
                         <outlet property="playPauseButton" destination="AG1-AY-XzS" id="EEc-jq-nE6"/>
                         <outlet property="progressBar" destination="Hgb-wF-guW" id="H5n-hg-AMY"/>
+                        <outlet property="stepLabel" destination="eWP-jz-XMi" id="O0g-of-Qiu"/>
                         <outlet property="timeElapsedLabel" destination="bAK-9A-OBW" id="tQS-Bw-gZL"/>
                         <outlet property="timeRemainingLabel" destination="2U1-xE-PDN" id="dAs-vD-nir"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1jS-ZI-5R5" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1542" y="360"/>
+            <point key="canvasLocation" x="2045" y="359"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="mjf-Im-WFH"/>
+        <segue reference="cbt-1J-ZHW"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="close-icon" width="299" height="352"/>
